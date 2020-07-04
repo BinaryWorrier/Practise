@@ -14,9 +14,21 @@ namespace DrawingPractice01.Infrastructure
             this.graphics = graphics;
         }
 
+        private byte pixelRatio = 1;
+        public byte PixedRatio
+        {
+            get => pixelRatio;
+            set
+            {
+                if (value < 1 || value > 10)
+                    throw new ArgumentException("Must be between 1 and 10 inclusive", "PixelRatio");
+                pixelRatio = value;
+            }
+        }
+
         public void DrawPoint(DrawColour colour, int x, int y)
         {
-            graphics.FillRectangle(ColourToBrush(colour), x, y, 1, 1);
+            graphics.FillRectangle(ColourToBrush(colour), x * PixedRatio, y * PixedRatio, PixedRatio, PixedRatio);
         }
 
         private Brush ColourToBrush(DrawColour colour)
