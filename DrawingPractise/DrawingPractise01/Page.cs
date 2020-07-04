@@ -8,10 +8,11 @@ namespace DrawingPractice01
     partial class Page
     {
         private readonly IPencil pencil;
+
         public void Draw()
         {
             var smile = new Smile();
-            smile.Draw(pencil, 5);
+            smile.Draw(pencil);
         }
     }
 }

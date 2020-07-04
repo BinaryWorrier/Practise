@@ -31,25 +31,21 @@ namespace DrawingPractice01
 
         };
 
-        public void Draw(IPencil pencil, int pixelSize)
+        public void Draw(IPencil pencil)
         {
             int offset = 10;
-            for (int arrY = 0; arrY < pixelArray.Length; arrY ++)
+            pencil.PixedRatio = 5;
+            for (int arrY = 0; arrY < pixelArray.Length; arrY++)
             {
-                for (int arrX = 0; arrX < pixelArray[arrY].Length; arrX ++)
+                for (int arrX = 0; arrX < pixelArray[arrY].Length; arrX++)
                 {
                     if (pixelArray[arrY][arrX] == 1)
                     {
-                        for (int pixelX = 0; pixelX < pixelSize; pixelX++)
-                        {
-                            for (int pixelY = 0; pixelY < pixelSize; pixelY++)
-                            {
-                                pencil.DrawPoint(DrawColour.Black, offset + (arrX * pixelSize) + pixelX, offset + (arrY * pixelSize) + pixelY);
-                            }
-                        }
+                        pencil.DrawPoint(DrawColour.Black, offset + arrX, offset + arrY);
                     }
                 }
             }
+            pencil.PixedRatio = 1;
         }
 
     }
